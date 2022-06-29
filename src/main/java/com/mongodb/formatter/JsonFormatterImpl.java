@@ -1,4 +1,4 @@
-package formatter;
+package com.mongodb.formatter;
 
 import org.json.JSONObject;
 
