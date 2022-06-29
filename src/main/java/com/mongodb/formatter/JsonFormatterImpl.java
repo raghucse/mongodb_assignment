@@ -1,12 +1,14 @@
 package com.mongodb.formatter;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JsonFormatterImpl implements JsonFormatter {
 
     /**
-     * Formats Json as following
-     * Given
+     * Takes a JSON string as input and outputs a flattened version of the JSON string,
+     * with keys as the path to every terminal value in the JSON structure.
+     * Example : Given
      * {
      *      "a": 1,
      *      "b": true,
@@ -27,7 +29,7 @@ public class JsonFormatterImpl implements JsonFormatter {
      * @return formatted json string
      */
     @Override
-    public String format(String jsonString) {
+    public String format(String jsonString) throws JSONException {
         JSONObject jsonObject = new JSONObject(jsonString);
         JSONObject res = new JSONObject();
         recurseFormatter(jsonObject, "",res);
@@ -46,9 +48,8 @@ public class JsonFormatterImpl implements JsonFormatter {
     }
 
     @Override
-    public void printJson(String jsonString) {
+    public void prettyPrintJson(String jsonString) {
         JSONObject obj = new JSONObject(jsonString);
         System.out.println(obj.toString(2));
     }
-
 }

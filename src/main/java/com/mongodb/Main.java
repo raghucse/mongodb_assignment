@@ -2,6 +2,7 @@ package com.mongodb;
 
 import com.mongodb.formatter.JsonFormatter;
 import com.mongodb.formatter.JsonFormatterImpl;
+import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,7 +21,11 @@ public class Main {
             e.printStackTrace();
         }
 
-        JsonFormatter jsonFormatter = new JsonFormatterImpl();
-        jsonFormatter.printJson(jsonFormatter.format(sb.toString()));
+        try {
+            JsonFormatter jsonFormatter = new JsonFormatterImpl();
+            jsonFormatter.prettyPrintJson(jsonFormatter.format(sb.toString()));
+        } catch (JSONException ex) {
+            System.out.println("Invalid Json: " + ex.getMessage());
+        }
     }
 }
