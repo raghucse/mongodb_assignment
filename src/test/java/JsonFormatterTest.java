@@ -62,6 +62,25 @@ public class JsonFormatterTest {
     }
 
     @Test
+    void testJsonMultiLevel() {
+        String testJson = "{\n" +
+                "\t\"a\": 1,\n" +
+                "\t\"b\" : {\n" +
+                "\t\t\"c\" : {\n" +
+                "\t\t\t\"r\": {\n" +
+                "\t\t\t\t\"gg\": {\n" +
+                "\t\t\t\t\t\"ttt\": true,\n" +
+                "\t\t\t\t\t\"gd\": 1.4,\n" +
+                "\t\t\t\t}\n" +
+                "\t\t\t}\n" +
+                "\t\t}\n" +
+                "\t}\n" +
+                "}";
+        String expected = "{\"a\":1,\"b.c.r.gg.gd\":1.4,\"b.c.r.gg.ttt\":true}";
+        assertEquals(expected, jsonFormatter.format(testJson));
+    }
+
+    @Test
     void testJsonInvalidJson() {
         String testJson = "\n" +
                 "\t\"a\": 1,\n" +

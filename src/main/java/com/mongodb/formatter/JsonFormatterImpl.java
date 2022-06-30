@@ -4,30 +4,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class JsonFormatterImpl implements JsonFormatter {
-
-    /**
-     * Takes a JSON string as input and outputs a flattened version of the JSON string,
-     * with keys as the path to every terminal value in the JSON structure.
-     * Example : Given
-     * {
-     *      "a": 1,
-     *      "b": true,
-     *      "c": {
-     *          "d": 3,
-     *          "e": "test"
-     *      }
-     * }
-     *
-     * Output
-     * {
-     *      "a": 1,
-     *      "b": true,
-     *      "c.d": 3,
-     *      "c.e": "test"
-     * }
-     * @param jsonString input json string
-     * @return formatted json string
-     */
     @Override
     public String format(String jsonString) throws JSONException {
         JSONObject jsonObject = new JSONObject(jsonString);
@@ -36,9 +12,9 @@ public class JsonFormatterImpl implements JsonFormatter {
         return res.toString();
     }
 
-    public void recurseFormatter(JSONObject jsonObject, String finalKey, JSONObject res) {
+    private void recurseFormatter(JSONObject jsonObject, String finalKey, JSONObject res) {
         for(String key: jsonObject.keySet()) {
-            String curKey = finalKey.isEmpty() ? ""+ key : finalKey+"."+key;
+            String curKey = finalKey.isEmpty() ?  key : finalKey+"."+key;
             if(jsonObject.get(key) instanceof JSONObject ) {
                 recurseFormatter((JSONObject)jsonObject.get(key), curKey, res);
             } else {

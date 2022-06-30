@@ -11,6 +11,7 @@ import java.nio.charset.Charset;
 
 public class Main {
     public static void main(String[] args) {
+
         StringBuilder sb = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in, Charset.defaultCharset()))) {
             String line;
