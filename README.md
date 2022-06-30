@@ -1,15 +1,15 @@
 # mongodb_assignment
 
-##Pre-requisites  
+## Pre-requisites  
 java oracle jdk 18  
 Maven 
 
-##How to compile and Package
+## How to compile and Package
 1. Clone the project from git
 2. Run 'mvn clean package' under folder when pom.xml is present
 3. Executable with dependencies will be generated under target folder
 
-##Running the executable
+## Running the executable
 
 **Use following command to run from a json file** </br>
 cat sample.json | java -jar jsonformatter-1.0-RELEASE-jar-with-dependencies.jar 
