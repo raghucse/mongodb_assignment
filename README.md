@@ -14,6 +14,6 @@ Maven
 **Use following command to run from a json file** </br>
 cat sample.json | java -jar jsonformatter-1.0-RELEASE-jar-with-dependencies.jar  
 ***or***  
-echo "{\"a\": 1}" | java -jar jsonformatter-1.0-RELEASE-jar-with-dependencies.jar   
+echo "{\\"a\\": {\\"b\\": 1}}" | java -jar jsonformatter-1.0-RELEASE-jar-with-dependencies.jar   
 
 note: latest executable is included under /executable
